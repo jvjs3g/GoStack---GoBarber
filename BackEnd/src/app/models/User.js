@@ -5,7 +5,7 @@ class User extends Model{
     super.init({
       name:Sequelize.STRING,
       email:Sequelize.STRING,
-      password:Sequelize.VIRTUAL,
+      password:Sequelize.VIRTUAL, 
       password_hash:Sequelize.STRING,
       provider:Sequelize.BOOLEAN,
     },
@@ -21,8 +21,12 @@ class User extends Model{
     return this;
   }
 
+  static associate(models){
+    this.belongsTo(models.file, { foreignKey: 'avatar_id'});
+  }
+
   checkPassword(password){
-    return bcrypt.compare(password,this.password_hash);
+    return bcrypt.compare(password, this.password_hash);
   }
 }
 

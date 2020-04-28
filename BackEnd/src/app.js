@@ -8,7 +8,7 @@ class App{
     this.routes();
   }
 
-  middlewares(){0
+  middlewares(){
     this.server.use(express.json());
   }
 

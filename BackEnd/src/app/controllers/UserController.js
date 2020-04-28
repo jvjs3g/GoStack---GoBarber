@@ -19,7 +19,7 @@ class UserController{
     if(userExists){
       return response.status(400).json({erro:'User already exists.'})
     }
-    const {id , name , email , provider } = await User.create(request.body);
+    const {id , name , email , provider } = await User.create(request.body)
 
     return response.json({
       id,
@@ -48,13 +48,13 @@ class UserController{
     }
 
 
-    const { email ,oldPassword } = request.body;
+    const { email , oldPassword } = request.body;
 
     const user = await User.findByPk(request.userId);
 
     if(email && email !== user.email){
 
-      const userExists = await User.findOne({ where:{ email: request.body.email }})
+      const userExists = await User.findOne({ where:{ email }})
       if(userExists){
         return response.status(400).json({erro:'User already exists.'})
       }
