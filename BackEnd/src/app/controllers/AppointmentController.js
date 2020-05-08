@@ -65,6 +65,7 @@ class AppointmentController{
       return response.status(400).json({ error:'Past dates are not permitted'});
     }
 
+
     /**
      * Check date availability
      */
@@ -80,10 +81,18 @@ class AppointmentController{
     if(checkAvailability){
       return response.status(400).json({ error:'Appointment date is not available' });
     }
+
+    /**
+     * check if user is different
+     */
+
+     if(request.userId == provider_id){
+       return response.status(401).json({error:'You can not make an appointment with yourself'})
+     }
     const appointment = await Appointment.create({
       user_id:request.userId,
       provider_id,
-      date:hourStatrt,
+      date,
     });
 
   /**
@@ -93,7 +102,7 @@ class AppointmentController{
 
    const formattedDate = format(
      hourStatrt,
-     "'dia' dd 'de' MMM', ás H:mm'h'",
+     "'dia' dd 'de' MMMM', ás 'H:mm'h'",
      {locale:pt}
    );
 
