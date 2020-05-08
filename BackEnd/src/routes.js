@@ -19,6 +19,7 @@ router.put('/users',userController.update);
 router.get('/provider',ProviderController.index);
 router.post('/appointments',AppointmentController.store);
 router.get('/appointments',AppointmentController.index);
+router.delete('/appointments/:id',AppointmentController.delete);
 router.get('/schedule',ScheduleController.index);
 router.get('/notifications',NotificationController.index);
 router.put('/notifications/:id',NotificationController.update);
