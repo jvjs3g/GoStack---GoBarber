@@ -1,12 +1,12 @@
-export default {
-  host: "smtp.mailtrap.io",
-  port: 2525,
-  secure:false,
+const  $usuario = 'gobarberbr@gmail.com';
+const  $senha = '#x2020x#'; 
+export default{
+  service: 'gmail',
   auth: {
-    user: "2322ddf87c6504",
-    pass: "265c6fd048d84d"
+      user: $usuario,
+      pass: $senha
   },
   default:{
     from: 'Equipe GoBarber <noreply@gobarber.com>',
   }
-};
+}
