@@ -1,6 +1,7 @@
-import { format , parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { format , parseISO }  from 'date-fns';
+import pt from 'date-fns/locale/pt'; 
 import Mail from '../../lib/Mail';
+
 class CancellationMail{
   get key(){
     return 'CancellationMail';
@@ -8,8 +9,9 @@ class CancellationMail{
 
   async handle({ data }){
     const { appointment } = data;
-
-     await Mail.sendMail({
+    
+    console.log('A fila executou !!')
+    await Mail.sendMail({
       to:`${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Agendamento cancelado',
       template: 'cancellation',
